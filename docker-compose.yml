@@ -1,0 +1,16 @@
+version: '3'
+services:
+  entitlements:
+    image: mockserver/mockserver
+    environment:
+      MOCKSERVER_INITIALIZATION_JSON_PATH: '/usr/src/mocks/entitlements.json'
+    volumes:
+      - ./entitlements.json:/usr/src/mocks/entitlements.json
+    ports:
+      - 1080:1080
+
+  app:
+    image: node:18.15-alpine
+    working_dir: /usr/src/app
+    volumes:
+      - .:/usr/src/app

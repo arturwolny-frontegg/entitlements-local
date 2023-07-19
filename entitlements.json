@@ -1,0 +1,40 @@
+[
+  {
+    "httpRequest": {
+      "path": "/entitlements/api/v1/vendor-entitlements",
+      "method": "GET"
+    },
+    "httpResponse": {
+      "body": {
+        "data": {
+          "features": [
+            [ "0000", "foo", []],
+            [ "1111", "bar", [ "foo.bar" ]],
+            [ "2222", "baz", [ "foo.baz" ]],
+            [ "3333", "xyz", [ "foo.xyz" ]]
+          ],
+          "featureBundles": [
+            [ "b001", [ "1111" ]],
+            [ "b002", [ "2222" ]]
+          ],
+          "entitlements": [
+            [ "b001", "t-1" ],
+            [ "b002", "t-1", "u-1", "2023-07-30T00:00:00+00:00" ],
+          ]
+        },
+        "snapshotOffset": 9999
+      }
+    }
+  },
+  {
+    "httpRequest": {
+      "method": "GET",
+      "path": "/entitlements/api/v1/vendor-entitlements-snapshot-offset"
+    },
+    "httpResponse": {
+      "body": {
+        "snapshotOffset": 9999
+      }
+    }
+  }
+]
