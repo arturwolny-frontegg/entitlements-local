@@ -42,7 +42,7 @@ process.on('unhandledRejection', reason => {
             const token = req.header('Authorization')?.split(' ')[1];
             const featureKey = req.param('feature', '');
 
-            const entity = await identity.validateToken(token!);
+            const entity = await identity.validateToken(token!, { withRolesAndPermissions: true });
             const entitlement = client.forUser(entity);
 
             res.send({
@@ -57,7 +57,7 @@ process.on('unhandledRejection', reason => {
             const token = req.header('Authorization')?.split(' ')[1];
             const permissionKey = req.param('permission', '');
 
-            const entity = await identity.validateToken(token!);
+            const entity = await identity.validateToken(token!, { withRolesAndPermissions: true });
             const entitlement = client.forUser(entity);
 
             res.send({
